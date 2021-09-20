@@ -199,7 +199,7 @@ def main(dict_args=None):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
         model_args, data_args, training_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))
-    elif dict_arts==None:
+    elif dict_args==None:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     else:
         model_args, data_args, training_args = parser.parse_dict()
