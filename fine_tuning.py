@@ -202,7 +202,7 @@ def main(dict_args=None):
     elif dict_args==None:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     else:
-        model_args, data_args, training_args = parser.parse_dict()
+        model_args, data_args, training_args = parser.parse_dict(dict_args)
 
     # Setup logging
     logging.basicConfig(
