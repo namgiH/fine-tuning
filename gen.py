@@ -75,7 +75,7 @@ def generate_messages(
     return generated_sequences
 
 def run(weights_dir='output', temperature=1.0, k=400, p=0.9, repetition_penalty=1.0, num_return_sequences=5, length=100, stop_token='|EndOfText|', prompt_text='덕기는 안마루에서'):
-
+    model, tokenizer = get_model_tokenizer(weights_dir, device = 'cuda')
     res = generate_messages(
         model,
         tokenizer,
