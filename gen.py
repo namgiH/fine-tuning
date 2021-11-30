@@ -23,8 +23,7 @@ def generate_messages(
     repetition_penalty = 1.0,
     device = 'cuda',
     num_beams = None,
-    no_repeat_ngram_size = 0,
-    num_return_sequences = 1
+    no_repeat_ngram_size = 0
 ):
 
     MAX_LENGTH = int(100)
@@ -53,8 +52,7 @@ def generate_messages(
             do_sample=True,
             num_return_sequences=num_return_sequences,
             num_beams = num_beams,
-            no_repeat_ngram_size = no_repeat_ngram_size,
-            num_return_sequences = num_return_sequences
+            no_repeat_ngram_size = no_repeat_ngram_size
         )
 
     if len(output_sequences.shape) > 2:
@@ -81,7 +79,7 @@ def generate_messages(
     return generated_sequences
 
 def run(weights_dir='output', temperature=1.0, k=400, p=0.9, repetition_penalty=1.0, num_return_sequences=5, length=100, stop_token='|EndOfText|', prompt_text='덕기는 안마루에서'):
-    model, tokenizer = get_model_tokenizer(weights_dir, device = 'cuda')
+    model, tokenizer = get_model_tokenizer(weights_dir, device = 'cuda', num_beams = None, no_repeat_ngram_size = 0)
     res = generate_messages(
         model,
         tokenizer,
