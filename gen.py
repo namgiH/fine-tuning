@@ -21,7 +21,10 @@ def generate_messages(
     k=20,
     p=0.9,
     repetition_penalty = 1.0,
-    device = 'cuda'
+    device = 'cuda',
+    num_beams = None,
+    no_repeat_ngram_size = 0,
+    num_return_sequences = 1
 ):
 
     MAX_LENGTH = int(100)
@@ -49,6 +52,9 @@ def generate_messages(
             repetition_penalty=repetition_penalty,
             do_sample=True,
             num_return_sequences=num_return_sequences,
+            num_beams = num_beams,
+            no_repeat_ngram_size = no_repeat_ngram_size,
+            num_return_sequences = num_return_sequences
         )
 
     if len(output_sequences.shape) > 2:
