@@ -78,8 +78,8 @@ def generate_messages(
         generated_sequences.append(total_sequence)
     return generated_sequences
 
-def run(weights_dir='output', temperature=1.0, k=400, p=0.9, repetition_penalty=1.0, num_return_sequences=5, length=100, stop_token='|EndOfText|', prompt_text='덕기는 안마루에서'):
-    model, tokenizer = get_model_tokenizer(weights_dir, device = 'cuda', num_beams = None, no_repeat_ngram_size = 0)
+def run(weights_dir='output', temperature=1.0, k=400, p=0.9, repetition_penalty=1.0, num_return_sequences=5, length=100, stop_token='|EndOfText|', prompt_text='덕기는 안마루에서', num_beams = None, no_repeat_ngram_size = 0):
+    model, tokenizer = get_model_tokenizer(weights_dir, device = 'cuda')
     res = generate_messages(
         model,
         tokenizer,
@@ -90,7 +90,8 @@ def run(weights_dir='output', temperature=1.0, k=400, p=0.9, repetition_penalty=
         temperature = temperature,
         k=k,
         p=p,
-        repetition_penalty = repetition_penalty
+        repetition_penalty = repetition_penalty,
+        num_beams = None, no_repeat_ngram_size = 0
     )
     
     print('\n'.join(res))
